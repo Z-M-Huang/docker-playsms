@@ -1,18 +1,5 @@
 #!/bin/bash
 
-echo "=> Creating database playSMS in MySQL"
-/create_db.sh playsms
-
-/usr/bin/mysqld_safe >/dev/null 2>&1 &
-
-RET=1
-while [[ RET -ne 0 ]]; do
-    echo "=> Waiting for confirmation of MySQL service startup"
-    sleep 5
-    mysql -uroot -e "status" > /dev/null 2>&1
-    RET=$?
-done
-
 cd /app
 
 INSTALLCONF="./install.conf"
@@ -128,12 +115,8 @@ mkdir -p $PATHWEB $PATHLIB $PATHLOG
 echo -n .
 cp -rR web/* $PATHWEB
 set +e
-#echo -n .
-#mysqladmin -u $DBUSER -p$DBPASS -h $DBHOST -P $DBPORT create $DBNAME >/dev/null 2>&1
-#set -e
 echo -n .
-#mysql -u $DBUSER -p$DBPASS -h $DBHOST -P $DBPORT $DBNAME < db/playsms.sql
-mysql -uroot playsms < db/playsms.sql
+mysql -u $DBUSER -p $DBPASS -h $DBHOST -P $DBPORT $DBNAME < db/playsms.sql
 echo -n .
 cp $PATHWEB/config-dist.php $PATHWEB/config.php
 echo -n .

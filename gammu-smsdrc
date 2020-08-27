@@ -1,0 +1,30 @@
+[gammu]
+# Please configure this!
+port = /dev/ttyUSB0
+model = at
+connection = at115200
+synchronizetime = yes
+logfile = /var/log/gammu.log
+logformat = textalldate
+# Debugging
+#logformat = textall
+# SMSD configuration, see gammu-smsdrc(5)
+
+[smsd]
+service = files
+logfile = /var/log/gammu-smsd.txt
+# Increase for debugging information
+debuglevel = 0
+#ReceiveFrequency = 300
+ReceiveFrequency = 60
+StatusFrequency = 60
+CommTimeout = 60
+SendTimeout = 60
+LoopSleep = 10
+CheckSecurity = 0
+# Paths where messages are stored
+inboxpath = /var/spool/gammu/inbox/
+outboxpath = /var/spool/gammu/outbox/
+sentsmspath = /var/spool/gammu/sent/
+errorsmspath = /var/spool/gammu/error/
+deliveryreport = sms

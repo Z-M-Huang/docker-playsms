@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  playsms:
+    image: test
+    #restart: unless-stopped
+    container_name: PlaySMS
+    ports:
+      - 9080:80
+    environment:
+      - DBUSER=playsms
+      - DBPASS=playsmspwdfordb
+      - DBNAME=playsms
+      - DBHOST=192.168.1.250
+      - DBPORT=3306

@@ -1,12 +1,11 @@
 FROM ubuntu:bionic
-MAINTAINER Anton Raharja <araharja@protonmail.com>
-ADD README.md /README.md
 
 # debs
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -y update && \
 	apt-get -y install apt-utils && \
-	apt-get -y install supervisor git openssh-server pwgen apache2 libapache2-mod-php mariadb-server php php-cli php-mysql php-gd php-imap php-curl php-xml php-mbstring php-zip mc unzip
+	apt-get -y install supervisor git openssh-server pwgen apache2 libapache2-mod-php php php-cli php-mysql php-gd php-imap php-curl php-xml php-mbstring php-zip mc unzip && \
+	apt-get install gammu gammu-smsd
 
 # ssh
 ADD start-sshd.sh /start-sshd.sh
@@ -26,12 +25,10 @@ RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 RUN a2enmod rewrite
 RUN rm -rf /var/www/html/*
 
-# mysql
-ADD start-mysqld.sh /start-mysqld.sh
-ADD supervisord-mysqld.conf /etc/supervisor/conf.d/supervisord-mysqld.conf
-ADD create_db.sh /create_db.sh
-ADD my.cnf /etc/mysql/conf.d/my.cnf
-RUN rm -rf /var/lib/mysql/*
+# gammu
+RUN mkdir -p /var/spool/gammu/{inbox,outbox,sent,error}; chown gammu.gammu -Rf /var/spool/gammu/
+COPY gammu-smsdrc .
+RUN /etc/init.d/gammu-smsd start
 
 # playsms
 ADD start-playsmsd.sh /start-playsmsd.sh
@@ -48,8 +45,5 @@ ENV PHP_POST_MAX_SIZE 20M
 ADD run.sh /run.sh
 RUN chmod +x /*.sh
 
-# Add volumes for MySQL 
-VOLUME  ["/etc/mysql", "/var/lib/mysql" ]
-
-EXPOSE 22 80 3306
+EXPOSE 80
 CMD ["/run.sh"]

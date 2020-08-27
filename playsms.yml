@@ -1,6 +1,0 @@
-playsms:
-  image: antonraharja/playsms
-  ports:
-    - 11022:22
-    - 11080:80
-    - 11033:3306
