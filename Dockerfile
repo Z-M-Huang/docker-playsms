@@ -7,16 +7,6 @@ RUN apt-get -y update && \
 	apt-get -y install supervisor git openssh-server pwgen apache2 libapache2-mod-php php php-cli php-mysql php-gd php-imap php-curl php-xml php-mbstring php-zip mc unzip && \
 	apt-get -y install gammu gammu-smsd
 
-# ssh
-ADD start-sshd.sh /start-sshd.sh
-ADD supervisord-sshd.conf /etc/supervisor/conf.d/supervisord-sshd.conf
-RUN mkdir /var/run/sshd
-RUN echo 'root:changemeplease' | chpasswd
-RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
-ENV NOTVISIBLE "in users profile"
-RUN echo "export VISIBLE=now" >> /etc/profile
-
 # apache2
 ADD start-apache2.sh /start-apache2.sh
 ADD supervisord-apache2.conf /etc/supervisor/conf.d/supervisord-apache2.conf
