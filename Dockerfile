@@ -18,7 +18,8 @@ RUN rm -rf /var/www/html/*
 # gammu
 RUN mkdir -p /var/spool/gammu/{inbox,outbox,sent,error}; chown gammu.gammu -Rf /var/spool/gammu/
 COPY gammu-smsdrc /etc
-RUN /etc/init.d/gammu-smsd start
+ADD supervisord-gammu.conf /etc/supervisor/conf.d/supervisord-gammu.conf
+ADD start-gammu.sh /start-gammu.sh
 
 # playsms
 ADD start-playsmsd.sh /start-playsmsd.sh
