@@ -5,12 +5,15 @@
 # Please configure this!
 port = /dev/ttyUSB0
 connection = at
+gammucoding = utf8
 
 # Debugging
 logformat = textalldate
 
 # SMSD configuration, see gammu-smsdrc(5)
 [smsd]
+InboxFormat = unicode
+OutboxFormat = unicode
 pin = 0000
 service = files
 # logfile = syslog
