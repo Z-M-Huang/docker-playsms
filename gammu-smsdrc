@@ -17,9 +17,10 @@ service = files
 logfile = /var/log/gammu-smsd
 # Increase for debugging information
 debuglevel = 4
-ReceiveFrequency = 60
+ReceiveFrequency = 20
 # Paths where messages are stored
 inboxpath = /var/spool/gammu/inbox/
 outboxpath = /var/spool/gammu/outbox/
 sentsmspath = /var/spool/gammu/sent/
 errorsmspath = /var/spool/gammu/error/
+hangupcalls = 1
