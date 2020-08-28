@@ -36,4 +36,4 @@ ADD run.sh /run.sh
 RUN chmod +x /*.sh
 
 EXPOSE 80
-CMD ["/run.sh"]
+#CMD ["/run.sh"]
