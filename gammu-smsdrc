@@ -1,16 +1,11 @@
 [gammu]
 # Please configure this!
 port = /dev/ttyUSB0
-model = at
-connection = at115200
-synchronizetime = yes
-logfile = /var/log/gammu.log
-logformat = textalldate
-# Debugging
-#logformat = textall
-# SMSD configuration, see gammu-smsdrc(5)
+connection = at
+
 
 [smsd]
+ping = 0000
 service = files
 logfile = /var/log/gammu-smsd.txt
 # Increase for debugging information

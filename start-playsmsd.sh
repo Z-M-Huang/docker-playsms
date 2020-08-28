@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec /usr/local/bin/playsmsd start >/dev/null 2>&1
+exec /usr/local/bin/playsmsd /etc/playsmsd.conf start >/dev/null 2>&1
