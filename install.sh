@@ -157,6 +157,4 @@ echo
 
 cp install.conf install.conf.backup >/dev/null 2>&1
 
-mysqladmin -uroot shutdown
-
 exit 0
