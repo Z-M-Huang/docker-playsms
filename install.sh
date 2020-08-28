@@ -116,7 +116,11 @@ echo -n .
 cp -rR web/* $PATHWEB
 set +e
 echo -n .
-mysql -u $DBUSER -p$DBPASS -h $DBHOST -P $DBPORT $DBNAME < db/playsms.sql
+exists=$(echo "SELECT * FROM information_schema.tables WHERE table_schema = 'playsms' AND table_name = 'playsms_tblUser' LIMIT 1" | mysql -u $DBUSER -p$DBPASS -h $DBHOST -P $DBPORT $DBNAME --table)
+if [ -z "$exists" ] 
+then
+	mysql -u $DBUSER -p$DBPASS -h $DBHOST -P $DBPORT $DBNAME < db/playsms.sql
+fi
 echo -n .
 cp $PATHWEB/config-dist.php $PATHWEB/config.php
 echo -n .
