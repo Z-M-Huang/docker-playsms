@@ -4,7 +4,7 @@
 [gammu]
 # Please configure this!
 port = /dev/ttyUSB0
-connection = at115200
+connection = at
 
 # Debugging
 logformat = textalldate
