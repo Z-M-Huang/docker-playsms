@@ -5,7 +5,7 @@ connection = at
 
 
 [smsd]
-ping = 0000
+pin = 0000
 service = files
 logfile = /var/log/gammu-smsd.txt
 # Increase for debugging information
