@@ -1,4 +1,4 @@
-#!/bin/bash
+supervisord#!/bin/bash
 
 cd /app
 
@@ -150,30 +150,12 @@ chmod +x $PATHBIN/playsmsd
 echo -n .
 echo "end"
 echo
-$PATHBIN/playsmsd /etc/playsmsd.conf check
-sleep 3
-echo
-$PATHBIN/playsmsd /etc/playsmsd.conf start
-sleep 3
-echo
-$PATHBIN/playsmsd /etc/playsmsd.conf status
-sleep 3
-echo
 
 echo
 echo "playSMS has been installed on your system"
 echo
 
 cp install.conf install.conf.backup >/dev/null 2>&1
-
-echo
-echo "Attention"
-echo
-echo "When message \"unable to start playsmsd\" occurred above, please check:"
-echo
-echo "1. Possibly theres an issue with composer updates, try to run: \"composer update\""
-echo "2. Manually run playsmsd, eg: \"playsmsd start\", and then \"playsmsd status\""
-echo
 
 mysqladmin -uroot shutdown
 
