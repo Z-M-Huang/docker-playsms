@@ -2,8 +2,10 @@ version: "3"
 
 services:
   playsms:
-    image: test
-    #restart: unless-stopped
+    image: zhironghuang/playsms-gammu:latest
+    restart: unless-stopped
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
     container_name: PlaySMS
     ports:
       - 9080:80
