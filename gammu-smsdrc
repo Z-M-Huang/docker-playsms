@@ -1,29 +1,20 @@
-# Configuration file for Gammu SMS Daemon
-# Gammu library configuration, see gammurc(5)
-
 [gammu]
-# Please configure this!
 port = /dev/ttyUSB0
-connection = at
-gammucoding = utf8
+connection = at115200
+logfile = /var/log/gammu/gammu.log
+logformat = textall
 
-# Debugging
-logformat = textalldate
-
-# SMSD configuration, see gammu-smsdrc(5)
 [smsd]
+Service = files
+InboxPath = /var/spool/gammu/inbox/
+OutboxPath = /var/spool/gammu/outbox/
+SentSMSPath = /var/spool/gammu/sent/
+ErrorSMSPath = /var/spool/gammu/error/
 InboxFormat = unicode
 OutboxFormat = unicode
-pin = 0000
-service = files
-# logfile = syslog
-logfile = /var/log/gammu-smsd
-# Increase for debugging information
-debuglevel = 1
-ReceiveFrequency = 20
-# Paths where messages are stored
-inboxpath = /var/spool/gammu/inbox/
-outboxpath = /var/spool/gammu/outbox/
-sentsmspath = /var/spool/gammu/sent/
-errorsmspath = /var/spool/gammu/error/
-hangupcalls = 1
+TransmitFormat = auto
+debugLevel = 1
+LogFile = /var/log/gammu/smsd.log
+DeliveryReport = sms
+DeliveryReportDelay = 7200
+CheckSecurity = 0
