@@ -150,13 +150,13 @@ chmod +x $PATHBIN/playsmsd
 echo -n .
 echo "end"
 echo
-$PATHBIN/playsmsd check
+$PATHBIN/playsmsd /etc/playsmsd.conf check
 sleep 3
 echo
-$PATHBIN/playsmsd start
+$PATHBIN/playsmsd /etc/playsmsd.conf start
 sleep 3
 echo
-$PATHBIN/playsmsd status
+$PATHBIN/playsmsd /etc/playsmsd.conf status
 sleep 3
 echo
 
