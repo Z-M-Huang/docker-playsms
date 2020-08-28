@@ -17,7 +17,7 @@ RUN rm -rf /var/www/html/*
 
 # gammu
 RUN mkdir -p /var/spool/gammu/{inbox,outbox,sent,error}; chown gammu.gammu -Rf /var/spool/gammu/
-COPY gammu-smsdrc .
+COPY gammu-smsdrc /etc
 RUN /etc/init.d/gammu-smsd start
 
 # playsms
@@ -36,4 +36,4 @@ ADD run.sh /run.sh
 RUN chmod +x /*.sh
 
 EXPOSE 80
-#CMD ["/run.sh"]
+CMD ["/run.sh"]
