@@ -4,7 +4,7 @@ FROM ubuntu:bionic
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get -y update && \
 	apt-get -y install apt-utils && \
-	apt-get -y install supervisor git openssh-server pwgen apache2 mariadb-server libapache2-mod-php php php-cli php-mysql php-gd php-imap php-curl php-xml php-mbstring php-zip mc unzip && \
+	apt-get -y install supervisor git pwgen apache2 mariadb-server libapache2-mod-php php php-cli php-mysql php-gd php-imap php-curl php-xml php-mbstring php-zip mc unzip && \
 	apt-get -y install gammu gammu-smsd
 
 # apache2

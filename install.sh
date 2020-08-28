@@ -116,7 +116,7 @@ echo -n .
 cp -rR web/* $PATHWEB
 set +e
 echo -n .
-mysql -u $DBUSER -p $DBPASS -h $DBHOST -P $DBPORT $DBNAME < db/playsms.sql
+mysql -u $DBUSER -p$DBPASS -h $DBHOST -P $DBPORT $DBNAME < db/playsms.sql
 echo -n .
 cp $PATHWEB/config-dist.php $PATHWEB/config.php
 echo -n .
