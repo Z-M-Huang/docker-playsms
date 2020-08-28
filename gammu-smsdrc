@@ -1,25 +1,25 @@
+# Configuration file for Gammu SMS Daemon
+# Gammu library configuration, see gammurc(5)
+
 [gammu]
 # Please configure this!
 port = /dev/ttyUSB0
 connection = at
 
+# Debugging
+logformat = textalldate
 
+# SMSD configuration, see gammu-smsdrc(5)
 [smsd]
 pin = 0000
 service = files
-logfile = /var/log/gammu-smsd.txt
+# logfile = syslog
+logfile = /var/log/gammu-smsd
 # Increase for debugging information
-debuglevel = 0
-#ReceiveFrequency = 300
+debuglevel = 4
 ReceiveFrequency = 60
-StatusFrequency = 60
-CommTimeout = 60
-SendTimeout = 60
-LoopSleep = 10
-CheckSecurity = 0
 # Paths where messages are stored
 inboxpath = /var/spool/gammu/inbox/
 outboxpath = /var/spool/gammu/outbox/
 sentsmspath = /var/spool/gammu/sent/
 errorsmspath = /var/spool/gammu/error/
-deliveryreport = sms
