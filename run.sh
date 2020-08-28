@@ -5,8 +5,8 @@ sed -ri -e "s/^upload_max_filesize.*/upload_max_filesize = ${PHP_UPLOAD_MAX_FILE
 
 echo "=> Installing playSMS ..."
 /install.sh
-echo "=> Configuring Gammu"
-exec gammu-smsd --config /etc/gammu-smsdrc
+# echo "=> Configuring Gammu"
+# exec gammu-smsd --config /etc/gammu-smsdrc
 echo "=> Done!"
 
 
