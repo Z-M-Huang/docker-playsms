@@ -28,46 +28,9 @@ Pull/download the image from docker hub:
 
     docker pull zhironghuang/playsms-gammu:latest
 
-Run this for installation, just the first time:
-
-    docker run -d -p 11022:22 -p 11080:80 -p 11033:3306 zhironghuang/playsms-gammu:latest
-
-Get `<CONTAINER_ID>` of your image:
-
-    docker ps -l
-
-Follow logs:
-
-    docker logs -f <CONTAINER_ID>
-
-Once `sshd` runs, change the default shell or SSH root password:
-
-    ssh -p 11022 root@localhost
-    passwd root
-
-Change the password to your own secure password. The default shell or SSH root password is `changemeplease`
-
 ## Usage
 
-Start your container:
-
-    docker start <CONTAINER_ID>
-
-Stop your container:
-
-    docker stop <CONTAINER_ID>
-
-Running command inside the container:
-
-    docker exec <CONTAINER_ID> <COMMAND>
-
-Example of running command `playsmsd check` on `CONTAINER_ID` `dce34421e079`:
-
-    docker exec dce34421e079 playsmsd check
-
-## Maintainer
-
-- Anton Raharja <araharja@protonmail.com>
+See docker-compose.yml for examples
 
 ## References
 
